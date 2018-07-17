@@ -1,0 +1,31 @@
+.jumbotron {
+	margin-bottom: 4em;
+	background-color: #000;
+}
+.person-wrapper {
+	margin-botton: 2em;
+}
+.profile-pic {
+	width:50%;
+	float: center;
+ }
+ .swain-profile-pic {
+	width:75%;
+	 
+	float: center;
+ }
+.btn-primary {
+	background-image: none;
+	border: none;
+	border-radius: none;
+	background-color: #2892D7;
+}
+h3 {
+	margin-bottom: 1em;
+}
+h2   {
+	color: #fff;
+}
+h5   {
+	color: #fff;
+}

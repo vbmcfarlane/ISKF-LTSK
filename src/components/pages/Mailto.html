@@ -1,0 +1,155 @@
+<html><head>
+<meta charset="UTF-8">
+<title>Mailto Link Generator</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<meta name="description" content="Mailto Link Generator is a tool that helps you generate the mailto link with all optional parameters">
+<meta name="keywords" content="Mailto, Mailto Generator, Mailto Link">
+<style>
+.spacingBelowButtons{margin-bottom:1em;}
+</style>
+</head>
+<body itemtype="http://schema.org/WebPage">
+<div class="container">
+	<header itemscope="" itemtype="http://schema.org/WPHeader">
+		<div class="page-header">
+			<h1 itemprop="headline">Mailto Link Generator</h1>
+		</div>
+    </header>
+    
+	<form>
+    	<div class="row">
+    		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				 
+				<div class="form-group">
+					<label for="to">To:</label>
+					<input name="to" id="to" type="text" class="form-control" placeholder="karatecoach10@gmail.com ">
+				</div>
+				<div class="form-group">
+					<label for="subject">Subject:</label>
+					<input name="subject" id="subject" type="text" class="form-control" placeholder="Inquiry into the Shotokan Karate Classes">
+				</div>
+				<div class="form-group">
+					<label for="emailbody">Body:</label>
+                  <textarea name="emailbody" id="emailbody" rows="6" class="form-control" placeholder="The body of the email"></textarea>
+				</div>
+              	<div class="form-group spacingBelowButtons">
+              		<button class="btn btn-success" type="button" id="generatemailtocode">Generate mailto code</button>
+              		<button class="btn btn-default" type="reset" id="reset">Reset</button>
+              	</div>
+			</div>
+    	</div>
+    	<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="form-group">
+					<label for="generatedhtmlcode">Generated HTML code:</label>
+                  <textarea name="generatedhtmlcode" id="generatedhtmlcode" rows="6" class="form-control" placeholder="Generated HTML Code"></textarea>
+				</div>    
+			</div>
+		</div>
+       	<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="form-group">
+               	<label for="generatedlinkview">Generated link view:</label>
+                	<div id="generatedlinkview"></div>
+				</div>
+			</div>
+		</div>
+	</form>   
+    
+</div>
+<script async="" src="//www.google-analytics.com/analytics.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+	console.log('Document ready');
+	// Bind to the onClick event of the buttons
+	$('#generatemailtocode').click(function() {
+		GenerateEmailToCode();
+	});
+	
+	$('#reset').click(function() {
+		Reset();
+	});
+});
+
+/*
+* Generate the mailto link
+*/
+function GenerateEmailToCode() {
+	// The variable that will contain the link
+	var linkcode = '<a href="mailto:';
+	var i = 0;
+	// Collect the form values
+	var linktext = $.trim($('#linktext').val());
+	var to = $.trim($('#to').val());
+	var cc = $.trim($('#cc').val());
+	var bcc = $.trim($('#bcc').val());
+	var subject = $.trim($('#subject').val());
+	var emailbody = $.trim($('#emailbody').val());
+	
+	subject = encodeURIComponent(subject);
+	emailbody = encodeURIComponent(emailbody);
+	
+	if (to != '') {
+		linkcode += to;
+	}
+	
+	if (cc != '') {
+		linkcode += (i++==0?'?':'&amp;');
+		linkcode += 'cc=';
+		linkcode += cc;
+	}
+
+	if (bcc !='') {
+		linkcode += (i++==0?'?':'&amp;');
+		linkcode += 'bcc=';
+		linkcode += bcc;
+	}
+
+	if (subject != '') {
+		linkcode += (i++==0?'?':'&amp;');
+		linkcode += 'subject=';
+		linkcode += subject;
+	}
+
+	if (emailbody != '') {
+		linkcode += (i++==0?'?':'&amp;');
+		linkcode += 'body=';
+		linkcode += emailbody;
+	}
+	
+	linkcode += '">';
+
+	if (linktext != '') { 
+		linkcode += linktext;
+	} else {
+		linkcode += "Send mail";
+	}
+
+	linkcode += '</a>';
+
+	$('#generatedhtmlcode').val(linkcode);
+	$('#generatedlinkview').html(linkcode);
+}
+
+/*
+* Reset the page details that can not bve reset by the
+* reset button.
+*/
+function Reset() {
+	$('#generatedlinkview').html('');
+}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-116243-38', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+</body></html>

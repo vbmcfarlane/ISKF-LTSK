@@ -1,0 +1,25 @@
+import React, {Component} from "react";
+import { Link } from 'react-router-dom';
+import { Jumbotron, Grid, ResponsiveEmbed, Row, Col, Image, Button} from 'react-bootstrap';
+import Footer from "./Footer";
+import './InstructorsCarousel.css';
+import Navigate from "../Navigate";
+export default class InstructorsCarousel extends Component {
+  render() {
+    return (
+      <Grid className="carousel">
+
+      <div className="carousel-container">
+      		<Row className="show-grid text-center">
+              <Col xs={12} sm={4} md={3}  circle className="person-wrapper">
+                  <Image src="/iskflogo.png" circle className="profile-pic" />
+            </Col>
+            <br />
+  				</Row>
+  		</div>
+  <Footer />
+  </Grid>
+ );
+}
+}
+ 
