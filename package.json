@@ -1,8 +1,9 @@
 {
-  "name": "ltsk",
+  "name": "iskf-ltsk",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "hoek": "^4.2.1",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",
